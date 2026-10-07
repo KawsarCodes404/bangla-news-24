@@ -14,8 +14,8 @@ const NewsCard = ({ news }: {news: Inews}) => {
             <figure>
                 <Image
                     src={news.imageUrl}
-                    height={400}
-                    width={400}
+                    height={600}
+                    width={600}
                     alt={news.imageAlt} />
             </figure>
 

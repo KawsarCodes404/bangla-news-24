@@ -13,7 +13,7 @@ const MainNews = ({ news }: {news: News[]}) => {
     const [firstNews, ...otherNews] = news;
     return (
         <div className="flex gap-2">
-            <div className="card bg-base-100 w-96 shadow-sm">
+            <div className="card bg-base-100 w-99 shadow-sm">
                 <figure>
                     <Image
                         src={firstNews.imageUrl}
