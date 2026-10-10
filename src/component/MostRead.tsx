@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 interface IMostReadNews {
     id: string;
     title: string;
 }
 
-const MostRead = async() => {
+const MostRead = async () => {
 
     const res = await fetch('https://news-api-v2.vercel.app/api/news/most-read');
 
@@ -16,12 +18,16 @@ const MostRead = async() => {
 
             <div className="grid gap-3">
                 {
-                    news.map((n, i) => <div
+                    news.map((n, i) => <Link
+                        href={`/news/${n.id}`}
                         key={n.id}
-                        className="flex gap-2"
                     >
-                        <p className="text-2xl font-bold text-red-600">{i + 1}</p> <h1>{n.title}</h1>
-                    </div>)
+                        <div
+                            className="flex gap-2"
+                        >
+                            <p className="text-2xl font-bold text-red-600">{i + 1}</p> <h1>{n.title}</h1>
+                        </div>
+                    </Link>)
                 }
             </div>
         </div>

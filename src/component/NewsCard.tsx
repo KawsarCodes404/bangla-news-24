@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface Inews {
+    id: string;
     description: string;
     category: string;
     title: string;
@@ -8,26 +10,28 @@ interface Inews {
     imageAlt: string;
 }
 
-const NewsCard = ({ news }: {news: Inews}) => {
+const NewsCard = ({ news }: { news: Inews }) => {
     return (
-        <div className="card bg-base-100 shadow-sm">
-            <figure>
-                <Image
-                    src={news.imageUrl}
-                    height={600}
-                    width={600}
-                    alt={news.imageAlt} />
-            </figure>
+        <Link href={`/news/${news.id}`}>
+            <div className="card bg-base-100 shadow-sm">
+                <figure>
+                    <Image
+                        src={news.imageUrl}
+                        height={600}
+                        width={600}
+                        alt={news.imageAlt} />
+                </figure>
 
-            <div className="card-body">
-                <p className="font-semibold text-red-600">{news.category}</p>
+                <div className="card-body">
+                    <p className="font-semibold text-red-600">{news.category}</p>
 
-                <h2 className="card-title">{news.title}</h2>
+                    <h2 className="card-title">{news.title}</h2>
 
-                <p>{news.description}</p>
+                    <p>{news.description}</p>
 
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

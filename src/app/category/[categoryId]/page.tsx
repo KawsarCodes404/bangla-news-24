@@ -1,4 +1,5 @@
 import NewsCard from "@/component/NewsCard";
+import { notFound } from "next/navigation";
 
 interface Inews {
     description: string;
@@ -9,14 +10,18 @@ interface Inews {
     id: string;
 }
 
-const CategoryPage = async({params}) => {
-    const {categoryId} = await params;
+const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
+    const { categoryId } = await params;
 
     const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`);
 
     const data = await res.json();
 
     const categoryNews: Inews[] = data.data
+
+    if (!data) {
+        notFound();
+    }
 
     return (
         <div>
@@ -28,7 +33,7 @@ const CategoryPage = async({params}) => {
 
             <div className="grid grid-cols-3 gap-10">
                 {
-                    categoryNews.map((news) => <NewsCard 
+                    categoryNews.map((news) => <NewsCard
                         news={news}
                         key={news.id}
                     />)

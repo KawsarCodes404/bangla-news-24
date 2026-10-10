@@ -17,7 +17,7 @@ const NavLinks = async() => {
     // console.log(navs);
 
     return (
-        <div className="md:col-span-3 md:justify-self-center flex gap-3">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
 
             <Link href={'/'}>হোম</Link>
 
